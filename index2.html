@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DermaMind</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        .box4 img {
+            width: 100%;
+            height: auto;
+            border-radius: 10%;
+        }
+    </style>
+</head>
+<body>
+    <div class="background" >
+    <header class="header">
+        <h1 class="logo">DermaMind</h1>
+        <nav class="navbar">
+            <a href="#Home" class="nav-link">Home</a>
+            <a href="#Analysis" class="nav-link" >Analysis</a>
+            <a href="#ProductExplorer" class="nav-link">Product Explorer</a>
+            <a href="Login1.html" class="nav-link" id="login">Login</a>
+            <a href="#" class="nav-link" style="position:relative;bottom:-5px;"><span class="material-symbols-outlined">
+favorite
+</span></a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="Home" class="hero-section">
+            <div class="hero-content">
+                <p class="tagline">AI Powered Beauty Tech</p>
+                <h1 class="main-heading">Your Personal<br><span class="highlight">AI Skin Expert</span></h1>
+                <p class="description">Get personalized skincare analysis and product recommendations powered by artificial intelligence. Discover your perfect routine with science-backed insights.</p>
+                <div class="cta-buttons">
+                    <button class="cta-btn-primary" onclick="location.href='#Analysis'">Analyze Your Skin Now →</button>
+                    <button class="cta-btn-secondary" onclick="location.href='#ProductExplorer'" >Explore Products</button>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <img src="./hh.jpg" alt="A person using a phone for a skin analysis" class="hero-image">
+            </div>
+        </section>
+    </div>
+
+        <section  class="analysis-section">
+            <h2 class="section-heading">How DermaMind Works</h2>
+            <p class="section-description">Three simple steps to unlock your perfect skincare routine</p>
+            <div class="step-container">
+                <div class="step-card">
+                    <div class="icon-box icon-1">
+                        <i class="fa-solid fa-upload"></i>
+                    </div>
+                    <h3 class="step-heading">Upload</h3>
+                    <p class="step-description">Take a quick selfie.</p>
+                </div>
+                <div class="step-card">
+                    <div class="icon-box icon-2">
+                        <span class="material-symbols-outlined">neurology</span>
+                    </div>
+                    <h3 class="step-heading">Analyze</h3>
+                    <p class="step-description">Our AI detects your skin type and concerns.</p>
+                </div>
+                <div class="step-card">
+                    <div class="icon-box icon-3">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <h3 class="step-heading">Discover</h3>
+                    <p class="step-description">Get your custom routine and perfect product matches.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="ProductExplorer" class="product-explorer-section">
+            <h2 class="section-heading">Explore Your Matches</h2>
+            <p class="section-description">Discover products curated specifically for your skin type and concerns</p>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="./11zon_resized (2).jpeg" alt="Product image" class="product-image" id="image2">
+                    <video src="./WhatsApp Video 2025-09-09 at 15.51.48_8089e2fc.mp4" muted loop preload="none" id="video2" style="display:none;height:200px;width:300px;"></video>
+                    <div class="product-info">
+                        <h4 class="product-name"  >FOREST ESSENTIALS</h4>
+                        <a href="#" class="nav-link" style="display: inline-block;"><span class="material-symbols-outlined" style="position: relative;
+top: -30px; left:250px;
+">
+favorite
+</span></a>
+                        <p class="product-details">Soundarya Radiance<br>₹2,950</p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="./11zon_resized (1).jpeg" alt="Product image" class="product-image" id="image3">
+                    <video src="./WhatsApp Video 2025-09-09 at 15.52.05_89dc9b4d.mp4" muted loop preload="none" id="video3" style="display:none;height:200px;width:300px;"></video>
+                    <div class="product-info">
+                        <h4 class="product-name">D'you Hustle</h4>
+                        <a href="#" class="nav-link" style="display: inline-block;"><span class="material-symbols-outlined" style="position: relative;
+top: -30px; left:250px;
+">
+favorite
+</span></a>
+                        <p class="product-details">Serum<br>₹2,100</p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="./11zon_resized (11).jpeg" alt="Product image" class="product-image" id="image">
+                    <video src="./WhatsApp Video 2025-09-08 at 15.25.52_57770548.mp4" muted loop preload="none" id="video" style="display:none;height:200px;width:300px;"></video>
+                    <div class="product-info">
+                        <h4 class="product-name">Quench Botanics</h4>
+                        <a href="#" class="nav-link" style="display: inline-block;"><span class="material-symbols-outlined" style="position: relative;
+top: -30px; left:250px;
+">
+favorite
+</span></a>
+                        <p class="product-details">Mama Cica Face Mist<br>₹699</p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="./11zon_resized (8).jpeg" alt="Product image" class="product-image" id="image4">
+                    <video src="./video.mp4" muted loop preload="none" id="video4" style="display:none;height:200px;width:300px;"></video>
+                    <div class="product-info">
+                        <h4 class="product-name">Kama Ayurveda</h4>
+<a href="#" class="nav-link" style="display: inline-block;"><span class="material-symbols-outlined" style="position: relative;
+top: -30px; left:250px;
+">
+favorite
+</span></a>
+                        <p class="product-details">Ayurveda Kumkumadi Oil<br>₹2,495</p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="./11zon_resized (9).jpeg" alt="Product image" class="product-image" id="image5">
+                    <video src="./WhatsApp Video 2025-09-09 at 16.58.46_6926c611.mp4" muted loop preload="none" id="video5" style="display:none;height:200px;width:300px;"></video>
+                    <div class="product-info">
+                        <h4 class="product-name">Foxtale</h4>
+                        <a href="#" class="nav-link" style="display: inline-block;"><span class="material-symbols-outlined" style="position: relative;
+top: -30px; left:250px;
+">
+favorite
+</span></a>
+                        <p class="product-details">Dewy Sunscreen<br>₹745</p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="./11zon_resized (7).jpeg" alt="Product image" class="product-image" id="image6">
+                    <video src="./WhatsApp Video 2025-09-09 at 16.58.46_6a87fadd.mp4" muted loop preload="none" id="video6" style="display:none;height:200px;width:300px;"></video>
+                    <div class="product-info">
+                        <h4 class="product-name">Put Simply</h4>
+                        <a href="#" class="nav-link" style="display: inline-block;"><span class="material-symbols-outlined" style="position: relative;
+top: -30px; left:250px;
+">
+favorite
+</span></a>
+                        <p class="product-details">Water Dam Moisturizer<br>₹1,099</p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section" id="Analysis">
+            <h2 class="section-heading">Ready to Discover Your Skin's Truth?</h2>
+            <p class="section-description">Our AI-powered analysis reveals insights about your skin in seconds</p>
+            <div class="cta-content-container">
+                <img src="./aa.jpg" alt="Woman getting her skin analyzed" class="cta-image">
+                <div class="analysis-results-card">
+                    <h3 class="card-title">Your Analysis Results</h3>
+                    <div class="result-item">
+                        <span class="result-label">Skin Type</span>
+                        <span class="result-badge">Combination</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Key Concerns</span>
+                        <div class="concerns-badges">
+                            <span class="concern-badge badge-1">Enlarged Pores</span>
+                            <span class="concern-badge badge-2">Uneven Tone</span>
+                        </div>
+                    </div>
+                    <div class="analysis-status">
+                        <span>Analysis Complete</span>
+                    </div>
+                    <button class="cta-btn-card">Build Your Routine →</button>
+                </div>
+            </div>
+        </section>
+        <section class="LovedByUsers">
+            <h1 class="jack">Loved by Users</h1>
+            <p class="lion">Join thousands who've transformed their skincare routine with DermaMind</p>
+        <div class="head">
+            <div class="head1">
+            <img src="./WhatsApp Image 2025-09-13 at 21.23.37_15fac0d7.jpg" alt="" height="70px" width="70px" class="img">
+            <p class="para">Priya M., 24</p>
+            <div class="star">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+        </div> 
+<div class="quotes"><span class="material-symbols-outlined" >
+format_quote
+</span></div> 
+<p class="para1">"Finally found a moisturizer that doesn't break me out! The AI recommendations are scarily accurate."</p>
+        </div>
+            <div class="head1">
+                <img src="./WhatsApp Image 2025-09-13 at 21.23.36_7cd82d32.jpg" alt="" height="70px" width="70px" class="img">
+            <p class="para">Sarah K., 31
+</p>
+            <div class="star">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+        </div> 
+<div class="quotes"><span class="material-symbols-outlined" >
+format_quote
+</span></div> 
+<p class="para1">DermaMind helped me understand my skin like never before. My routine is now perfectly tailored to my needs.</p>
+        </div>
+            <div class="head1">
+                <img src="./WhatsApp Image 2025-09-13 at 21.23.37_57b0cd61.jpg" alt="" height="70px" width="70px" class="img">
+            <p class="para">Maria L., 28</p>
+            <div class="star">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+        </div> 
+<div class="quotes"><span class="material-symbols-outlined" >
+format_quote
+</span></div> 
+<p class="para1">"The ingredient transparency feature is a game-changer. I finally know what I'm putting on my skin!"</p>
+        </div>
+            </div>
+        </div>
+        </section>
+        <div class="start">
+            <button id="button">Ready to Transform Your Skin?</button>
+            <h1 class="h">Start Your Personalized</h1>
+            <h1 class="h" style="color: teal;font-Size:45px;margin-top:-20px;">Skincare Journey Today</h1>
+            <p class="sat">   Join thousands who've discovered their perfect skincare routine with AI-<br>powered analysis. Your skin transformation starts here.</p>
+            <button id="btn1">Get Started-It's free   &rarr;</button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <h3 class="footer-logo">DermaMind</h3>
+        <p class="footer-tagline">Your Personal Skin AI Expert</p>
+        <nav class="footer-nav">
+            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="#" class="footer-link">Terms of Service</a>
+            <a href="#" class="footer-link">Contact us</a>
+        </nav>
+        <p class="copyright">© 2024 DermaMind. All rights reserved.</p>
+    </footer>
+</body>
+<script>
+    const image=document.getElementById("image");
+    const video=document.getElementById("video");
+    image.addEventListener("mouseenter", () => {
+    image.style.display= "none";
+    video.style.display= "block";
+    video.play();
+    });
+    video.addEventListener("mouseleave", () => {
+    video.pause();                   
+    video.currentTime = 0;            
+    video.style.display = "none";     
+    image.style.display = "block";  
+    });    
+    const image2=document.getElementById("image2");
+    const video2=document.getElementById("video2");
+    image2.addEventListener("mouseenter", () => {
+    image2.style.display= "none";
+    video2.style.display= "block";
+    video2.play();
+    });
+    video2.addEventListener("mouseleave", () => {
+    video2.pause();                   
+    video2.currentTime = 0;            
+    video2.style.display = "none";     
+    image2.style.display = "block";  
+    });    
+    const image3=document.getElementById("image3");
+    const video3=document.getElementById("video3");
+    image3.addEventListener("mouseenter", () => {
+    image3.style.display= "none";
+    video3.style.display= "block";
+    video3.play();
+    });
+    video3.addEventListener("mouseleave", () => {
+    video3.pause();                   
+    video3.currentTime = 0;            
+    video3.style.display = "none";     
+    image3.style.display = "block";  
+    });    
+    const image4=document.getElementById("image4");
+    const video4=document.getElementById("video4");
+    image4.addEventListener("mouseenter", () => {
+    image4.style.display= "none";
+    video4.style.display= "block";
+    video4.play();
+    });
+    video4.addEventListener("mouseleave", () => {
+    video4.pause();                   
+    video4.currentTime = 0;            
+    video4.style.display = "none";     
+    image4.style.display = "block";  
+    });    
+    const image5=document.getElementById("image5");
+    const video5=document.getElementById("video5");
+    image5.addEventListener("mouseenter", () => {
+    image5.style.display= "none";
+    video5.style.display= "block";
+    video5.play();
+    });
+    video5.addEventListener("mouseleave", () => {
+    video5.pause();                   
+    video5.currentTime = 0;            
+    video5.style.display = "none";     
+    image5.style.display = "block";  
+    });    
+    const image6=document.getElementById("image6");
+    const video6=document.getElementById("video6");
+    image6.addEventListener("mouseenter", () => {
+    image6.style.display= "none";
+    video6.style.display= "block";
+    video6.play();
+    });
+    video6.addEventListener("mouseleave", () => {
+    video6.pause();                   
+    video6.currentTime = 0;            
+    video6.style.display = "none";     
+    image6.style.display = "block";  
+    });   
+    
+</script>
+</html>
