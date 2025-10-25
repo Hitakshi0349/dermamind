@@ -591,11 +591,7 @@
 
         // Global functions
         function viewProductDetails(productId) {
-            // This will be implemented later - for now show basic info
-            const product = productHelpers.getProductById(productId);
-            if (product) {
-                alert(`Product Details:\n\n${product.name}\n${product.description}\n${product.price}\n\n${product.fullDescription}`);
-            }
+            window.location.href = `product-detail.html?id=${productId}`;
         }
 
         function resetFilters() {

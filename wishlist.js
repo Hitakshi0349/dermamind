@@ -82,14 +82,27 @@ class WishlistManager {
         }
         
         return `
-            <div class="product-card" data-product-id="${product.id}">
-                <img src="${product.image}" alt="${product.name}" class="product-image">
-                <div class="product-info">
-                    <h4 class="product-name">${product.name}</h4>
-                    <p class="product-details">${product.description || ''}${price ? `<br>${price}` : ''}</p>
-                    <button class="remove-btn" onclick="wishlistManager.removeFromWishlist('${product.id}')">
-                        Remove from Wishlist
-                    </button>
+            <div class="wishlist-product-card" data-product-id="${product.id}">
+                <img src="${product.image}" alt="${product.name}" class="wishlist-product-image" onerror="this.src='https://via.placeholder.com/300x300?text=Product+Image'">
+                <div class="wishlist-product-info">
+                    <h4 class="wishlist-product-name">${product.name}</h4>
+                    <p class="wishlist-product-details">${product.description || ''}${price ? `<br>${price}` : ''}</p>
+                    
+                    <div class="wishlist-product-meta">
+                        <span class="wishlist-product-rating">
+                            <i class="fas fa-star"></i> ${product.rating || '4.0'}
+                        </span>
+                        <span class="wishlist-product-reviews">${product.reviews || '0'} reviews</span>
+                    </div>
+                    
+                    <div class="wishlist-buttons-container">
+                        <button class="view-details-btn" onclick="window.location.href='product-detail.html?id=${product.id}'">
+                            View Details
+                        </button>
+                        <button class="remove-btn" onclick="wishlistManager.removeFromWishlist('${product.id}')">
+                            Remove from Wishlist
+                        </button>
+                    </div>
                 </div>
             </div>
         `;
