@@ -16,7 +16,7 @@
         <nav class="navbar">
             <a href="#Home" class="nav-link">Home</a>
             <a href="#Analysis" class="nav-link">Analysis</a>
-            <a href="#ProductExplorer" class="nav-link">Product Explorer</a>
+            <a href="product-explorer.html" class="nav-link">Product Explorer</a>
             <a href="wishlist.html" class="nav-link" id="wishlist-link">
                 Wishlist <span class="wishlist-count" id="wishlist-count">0</span>
             </a>
@@ -31,8 +31,8 @@
                 <h1 class="main-heading">Your Personal<br><span class="highlight">AI Skin Expert</span></h1>
                 <p class="description">Get personalized skincare analysis and product recommendations powered by artificial intelligence. Discover your perfect routine with science-backed insights.</p>
                 <div class="cta-buttons">
-                    <button class="cta-btn-primary" onclick="location.href='#Analysis'">Analyze Your Skin Now →</button>
-                    <button class="cta-btn-secondary" onclick="location.href='#ProductExplorer'">Explore Products</button>
+                    <button class="cta-btn-primary" onclick="location.href='skin-analysis.html'">Analyze Your Skin Now →</button>
+                    <button class="cta-btn-secondary" onclick="location.href='product-explorer.html'">Explore Products</button>
                 </div>
             </div>
             <div class="hero-image-container">
@@ -50,14 +50,14 @@
                         <i class="fa-solid fa-upload"></i>
                     </div>
                     <h3 class="step-heading">Upload</h3>
-                    <p class="step-description">Take a quick selfie.</p>
+                    <p class="step-description">Take a quick selfie or upload skin photos for analysis.</p>
                 </div>
                 <div class="step-card">
                     <div class="icon-box icon-2">
                         <span class="material-symbols-outlined">neurology</span>
                     </div>
                     <h3 class="step-heading">Analyze</h3>
-                    <p class="step-description">Our AI detects your skin type and concerns.</p>
+                    <p class="step-description">Our AI detects your skin type, concerns, and conditions.</p>
                 </div>
                 <div class="step-card">
                     <div class="icon-box icon-3">
@@ -70,69 +70,13 @@
         </section>
 
         <section id="ProductExplorer" class="product-explorer-section">
-            <h2 class="section-heading">Explore Your Matches</h2>
+            <h2 class="section-heading">Featured Products</h2>
             <p class="section-description">Discover products curated specifically for your skin type and concerns</p>
-            <div class="product-grid">
-                <div class="product-card" data-product-id="forest-essentials">
-                    <img src="./11zon_resized (2).jpeg" alt="Product image" class="product-image" id="image2">
-                    <video src="./WhatsApp Video 2025-09-09 at 15.51.48_8089e2fc.mp4" muted loop preload="none" id="video2" style="display:none;"></video>
-                    <div class="product-info">
-                        <h4 class="product-name">FOREST ESSENTIALS</h4>
-                        <span class="material-symbols-outlined wishlist-icon">favorite</span>
-                        <p class="product-details">Soundarya Radiance<br>₹2,950</p>
-                        <button class="view-details-btn">View Details</button>
-                    </div>
-                </div>
-                <div class="product-card" data-product-id="dyou-hustle">
-                    <img src="./11zon_resized (1).jpeg" alt="Product image" class="product-image" id="image3">
-                    <video src="./WhatsApp Video 2025-09-09 at 15.52.05_89dc9b4d.mp4" muted loop preload="none" id="video3" style="display:none;"></video>
-                    <div class="product-info">
-                        <h4 class="product-name">D'you Hustle</h4>
-                        <span class="material-symbols-outlined wishlist-icon">favorite</span>
-                        <p class="product-details">Serum<br>₹2,100</p>
-                        <button class="view-details-btn">View Details</button>
-                    </div>
-                </div>
-                <div class="product-card" data-product-id="quench-botanics">
-                    <img src="./11zon_resized (11).jpeg" alt="Product image" class="product-image" id="image">
-                    <video src="./WhatsApp Video 2025-09-08 at 15.25.52_57770548.mp4" muted loop preload="none" id="video" style="display:none;"></video>
-                    <div class="product-info">
-                        <h4 class="product-name">Quench Botanics</h4>
-                        <span class="material-symbols-outlined wishlist-icon">favorite</span>
-                        <p class="product-details">Mama Cica Face Mist<br>₹699</p>
-                        <button class="view-details-btn">View Details</button>
-                    </div>
-                </div>
-                <div class="product-card" data-product-id="kama-ayurveda">
-                    <img src="./11zon_resized (8).jpeg" alt="Product image" class="product-image" id="image4">
-                    <video src="./video.mp4" muted loop preload="none" id="video4" style="display:none;"></video>
-                    <div class="product-info">
-                        <h4 class="product-name">Kama Ayurveda</h4>
-                        <span class="material-symbols-outlined wishlist-icon">favorite</span>
-                        <p class="product-details">Ayurveda Kumkumadi Oil<br>₹2,495</p>
-                        <button class="view-details-btn">View Details</button>
-                    </div>
-                </div>
-                <div class="product-card" data-product-id="foxtale">
-                    <img src="./11zon_resized (9).jpeg" alt="Product image" class="product-image" id="image5">
-                    <video src="./WhatsApp Video 2025-09-09 at 16.58.46_6926c611.mp4" muted loop preload="none" id="video5" style="display:none;"></video>
-                    <div class="product-info">
-                        <h4 class="product-name">Foxtale</h4>
-                        <span class="material-symbols-outlined wishlist-icon">favorite</span>
-                        <p class="product-details">Dewy Sunscreen<br>₹745</p>
-                        <button class="view-details-btn">View Details</button>
-                    </div>
-                </div>
-                <div class="product-card" data-product-id="put-simply">
-                    <img src="./11zon_resized (7).jpeg" alt="Product image" class="product-image" id="image6">
-                    <video src="./WhatsApp Video 2025-09-09 at 16.58.46_6a87fadd.mp4" muted loop preload="none" id="video6" style="display:none;"></video>
-                    <div class="product-info">
-                        <h4 class="product-name">Put Simply</h4>
-                        <span class="material-symbols-outlined wishlist-icon">favorite</span>
-                        <p class="product-details">Water Dam Moisturizer<br>₹1,099</p>
-                        <button class="view-details-btn">View Details</button>
-                    </div>
-                </div>
+            <div class="product-grid" id="featured-products">
+                <!-- Featured products will be dynamically loaded -->
+            </div>
+            <div class="cta-buttons" style="justify-content: center; margin-top: 40px;">
+                <button class="cta-btn-primary" onclick="location.href='product-explorer.html'">View All Products →</button>
             </div>
         </section>
 
@@ -157,7 +101,7 @@
                     <div class="analysis-status">
                         <span>Analysis Complete</span>
                     </div>
-                    <button class="cta-btn-card">Build Your Routine →</button>
+                    <button class="cta-btn-card" onclick="location.href='skin-analysis.html'">Build Your Routine →</button>
                 </div>
             </div>
         </section>
@@ -212,7 +156,7 @@
             <h1 class="h">Start Your Personalized</h1>
             <h1 class="h highlight">Skincare Journey Today</h1>
             <p class="sat">Join thousands who've discovered their perfect skincare routine with AI-powered analysis. Your skin transformation starts here.</p>
-            <button id="btn1">Get Started - It's free &rarr;</button>
+            <button id="btn1" onclick="location.href='skin-analysis.html'">Get Started - It's free &rarr;</button>
         </div>
     </main>
 
@@ -227,68 +171,98 @@
         <p class="copyright">© 2024 DermaMind. All rights reserved.</p>
     </footer>
 
+    <script src="products.js"></script>
     <script>
-        // Product data structure
-        const productData = {
-            'forest-essentials': {
-                id: 'forest-essentials',
-                name: 'FOREST ESSENTIALS',
-                description: 'Soundarya Radiance',
-                price: '₹2,950',
-                image: './11zon_resized (2).jpeg',
-                video: './WhatsApp Video 2025-09-09 at 15.51.48_8089e2fc.mp4'
-            },
-            'dyou-hustle': {
-                id: 'dyou-hustle',
-                name: 'D\'you Hustle',
-                description: 'Serum',
-                price: '₹2,100',
-                image: './11zon_resized (1).jpeg',
-                video: './WhatsApp Video 2025-09-09 at 15.52.05_89dc9b4d.mp4'
-            },
-            'quench-botanics': {
-                id: 'quench-botanics',
-                name: 'Quench Botanics',
-                description: 'Mama Cica Face Mist',
-                price: '₹699',
-                image: './11zon_resized (11).jpeg',
-                video: './WhatsApp Video 2025-09-08 at 15.25.52_57770548.mp4'
-            },
-            'kama-ayurveda': {
-                id: 'kama-ayurveda',
-                name: 'Kama Ayurveda',
-                description: 'Ayurveda Kumkumadi Oil',
-                price: '₹2,495',
-                image: './11zon_resized (8).jpeg',
-                video: './video.mp4'
-            },
-            'foxtale': {
-                id: 'foxtale',
-                name: 'Foxtale',
-                description: 'Dewy Sunscreen',
-                price: '₹745',
-                image: './11zon_resized (9).jpeg',
-                video: './WhatsApp Video 2025-09-09 at 16.58.46_6926c611.mp4'
-            },
-            'put-simply': {
-                id: 'put-simply',
-                name: 'Put Simply',
-                description: 'Water Dam Moisturizer',
-                price: '₹1,099',
-                image: './11zon_resized (7).jpeg',
-                video: './WhatsApp Video 2025-09-09 at 16.58.46_6a87fadd.mp4'
-            }
-        };
-
-        // Initialize wishlist functionality on main page
+        // Initialize when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
+            loadFeaturedProducts();
             initializeWishlistButtons();
             updateWishlistCount();
             setInitialWishlistStates();
-            setupVideoHoverEffects();
         });
 
-        // Set initial wishlist states when page loads
+        // Load featured products on homepage
+        function loadFeaturedProducts() {
+            const container = document.getElementById('featured-products');
+            if (!container) return;
+
+            // Get first 6 products as featured
+            const featuredProducts = productDatabase.slice(0, 6);
+            
+            container.innerHTML = featuredProducts.map(product => `
+                <div class="product-card" data-product-id="${product.id}">
+                    <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='https://via.placeholder.com/300x300?text=Product+Image'">
+                    <div class="product-info">
+                        <h4 class="product-name">${product.name}</h4>
+                        <span class="material-symbols-outlined wishlist-icon">favorite</span>
+                        <p class="product-details">${product.description}<br>${product.price}</p>
+                        <div class="product-meta">
+                            <span class="product-rating">
+                                <i class="fas fa-star"></i> ${product.rating}
+                            </span>
+                            <span class="product-reviews">${product.reviews} reviews</span>
+                        </div>
+                        <button class="view-details-btn" onclick="viewProductDetails('${product.id}')">View Details</button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Re-initialize wishlist buttons for new products
+            initializeWishlistButtons();
+            setInitialWishlistStates();
+        }
+
+        // View product details (to be implemented)
+        function viewProductDetails(productId) {
+            // This will open a product detail modal or page
+            const product = productHelpers.getProductById(productId);
+            if (product) {
+                alert(`Product Details:\n\n${product.name}\n${product.description}\n${product.price}\n\n${product.fullDescription}`);
+            }
+        }
+
+        // Wishlist functionality
+        function getWishlist() {
+            const wishlist = localStorage.getItem('dermamind-wishlist');
+            return wishlist ? JSON.parse(wishlist) : [];
+        }
+
+        function initializeWishlistButtons() {
+            const wishlistButtons = document.querySelectorAll('.product-info .wishlist-icon');
+            
+            wishlistButtons.forEach(button => {
+                // Remove any existing event listeners to prevent duplicates
+                const newButton = button.cloneNode(true);
+                button.parentNode.replaceChild(newButton, button);
+            });
+
+            // Re-select after cloning
+            const freshButtons = document.querySelectorAll('.product-info .wishlist-icon');
+            
+            freshButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const productCard = this.closest('.product-card');
+                    const productId = productCard.getAttribute('data-product-id');
+                    const product = productHelpers.getProductById(productId);
+                    
+                    if (product) {
+                        toggleWishlist(product, this);
+                    }
+                });
+
+                button.addEventListener('mouseenter', function(e) {
+                    e.stopPropagation();
+                });
+
+                button.addEventListener('mouseleave', function(e) {
+                    e.stopPropagation();
+                });
+            });
+        }
+
         function setInitialWishlistStates() {
             const wishlistButtons = document.querySelectorAll('.product-info .wishlist-icon');
             const wishlist = getWishlist();
@@ -303,63 +277,30 @@
             });
         }
 
-        // Get wishlist from localStorage
-        function getWishlist() {
-            const wishlist = localStorage.getItem('dermamind-wishlist');
-            return wishlist ? JSON.parse(wishlist) : [];
-        }
-
-        // Initialize wishlist buttons with proper event handling
-        function initializeWishlistButtons() {
-            const wishlistButtons = document.querySelectorAll('.product-info .wishlist-icon');
-            
-            wishlistButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    const productCard = this.closest('.product-card');
-                    const productId = productCard.getAttribute('data-product-id');
-                    
-                    if (productId && productData[productId]) {
-                        toggleWishlist(productData[productId], this);
-                    }
-                });
-
-                // Prevent event bubbling from the icon
-                button.addEventListener('mouseenter', function(e) {
-                    e.stopPropagation();
-                });
-
-                button.addEventListener('mouseleave', function(e) {
-                    e.stopPropagation();
-                });
-            });
-        }
-
-        // Toggle product in wishlist
         function toggleWishlist(product, button) {
             const wishlist = getWishlist();
             
-            const existingIndex = wishlist.findIndex(item => item.id === product.id);
+            // Check if product is already in wishlist
+            const isInWishlist = wishlist.some(item => item.id === product.id);
             
-            if (existingIndex > -1) {
+            if (isInWishlist) {
                 // Remove from wishlist
-                wishlist.splice(existingIndex, 1);
+                const updatedWishlist = wishlist.filter(item => item.id !== product.id);
+                localStorage.setItem('dermamind-wishlist', JSON.stringify(updatedWishlist));
                 button.classList.remove('active');
                 showNotification('Product removed from wishlist');
             } else {
                 // Add to wishlist
                 wishlist.push(product);
+                localStorage.setItem('dermamind-wishlist', JSON.stringify(wishlist));
                 button.classList.add('active');
                 showNotification('Product added to wishlist!');
             }
             
-            localStorage.setItem('dermamind-wishlist', JSON.stringify(wishlist));
             updateWishlistCount();
+            dispatchWishlistUpdate();
         }
 
-        // Update wishlist count in navigation
         function updateWishlistCount() {
             const wishlist = getWishlist();
             const countElement = document.getElementById('wishlist-count');
@@ -369,13 +310,10 @@
             }
         }
 
-        // Show notification
         function showNotification(message) {
-            // Remove existing notifications
             const existingNotifications = document.querySelectorAll('[data-notification]');
             existingNotifications.forEach(notification => notification.remove());
 
-            // Create notification element
             const notification = document.createElement('div');
             notification.style.cssText = `
                 position: fixed;
@@ -394,7 +332,6 @@
             
             document.body.appendChild(notification);
             
-            // Remove after 3 seconds
             setTimeout(() => {
                 notification.style.animation = 'slideOutRight 0.3s ease';
                 setTimeout(() => {
@@ -405,63 +342,9 @@
             }, 3000);
         }
 
-        // Setup video hover effects
-        function setupVideoHoverEffects() {
-            const products = [
-                { image: document.getElementById("image"), video: document.getElementById("video") },
-                { image: document.getElementById("image2"), video: document.getElementById("video2") },
-                { image: document.getElementById("image3"), video: document.getElementById("video3") },
-                { image: document.getElementById("image4"), video: document.getElementById("video4") },
-                { image: document.getElementById("image5"), video: document.getElementById("video5") },
-                { image: document.getElementById("image6"), video: document.getElementById("video6") }
-            ];
-
-            products.forEach(({image, video}) => {
-                if (image && video) {
-                    image.addEventListener("mouseenter", () => {
-                        image.style.display = "none";
-                        video.style.display = "block";
-                        video.play();
-                    });
-                    
-                    video.addEventListener("mouseleave", () => {
-                        video.pause();
-                        video.currentTime = 0;
-                        video.style.display = "none";
-                        image.style.display = "block";
-                    });
-                }
-            });
-        }
-
-        // Add CSS for notifications if not already present
-        if (!document.querySelector('#notification-styles')) {
-            const style = document.createElement('style');
-            style.id = 'notification-styles';
-            style.textContent = `
-                @keyframes slideInRight {
-                    from {
-                        transform: translateX(100%);
-                        opacity: 0;
-                    }
-                    to {
-                        transform: translateX(0);
-                        opacity: 1;
-                    }
-                }
-                
-                @keyframes slideOutRight {
-                    from {
-                        transform: translateX(0);
-                        opacity: 1;
-                    }
-                    to {
-                        transform: translateX(100%);
-                        opacity: 0;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
+        function dispatchWishlistUpdate() {
+            const event = new CustomEvent('wishlistUpdated');
+            window.dispatchEvent(event);
         }
     </script>
 </body>
