@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Skin Analysis - DermaMind</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        /* Skin Analysis Page Specific Styles */
+        .analysis-hero {
+            text-align: center;
+            padding: 80px 20px 40px;
+            background-color: #f5f6f8;
+        }
+        
+        .analysis-title {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .analysis-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1em;
+            margin-bottom: 30px;
+        }
+        
+        .upload-section {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+        }
+        
+        .upload-area {
+            border: 2px dashed #ddd;
+            border-radius: 15px;
+            padding: 60px 20px;
+            margin: 30px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary-color);
+            background-color: #f9f9f9;
+        }
+        
+        .upload-area.active {
+            border-color: var(--primary-color);
+            background-color: #f0f9f9;
+        }
+        
+        .upload-icon {
+            font-size: 3em;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        
+        .upload-text {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+        
+        .upload-hint {
+            font-size: 0.9em;
+            color: #aaa;
+        }
+        
+        #image-preview {
+            max-width: 300px;
+            max-height: 300px;
+            margin: 20px auto;
+            border-radius: 10px;
+            display: none;
+        }
+        
+        .analyze-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .analyze-btn:hover {
+            background-color: #006666;
+            transform: translateY(-2px);
+        }
+        
+        .analyze-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .results-section {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 40px;
+            display: none;
+        }
+        
+        .results-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .skin-score {
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .result-category {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 15px;
+        }
+        
+        .category-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .concerns-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .concern-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .concern-name {
+            color: var(--text-dark);
+        }
+        
+        .concern-severity {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .severity-low {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
+        
+        .severity-medium {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+        
+        .severity-high {
+            background: #ffebee;
+            color: #c62828;
+        }
+        
+        .routine-section {
+            background: #f0f9f9;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        
+        .routine-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .routine-tab {
+            padding: 10px 25px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .routine-tab.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .routine-steps {
+            display: none;
+        }
+        
+        .routine-steps.active {
+            display: block;
+        }
+        
+        .routine-step {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+        }
+        
+        .step-number {
+            background: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+        
+        .step-description {
+            color: var(--text-muted);
+            font-size: 0.9em;
+        }
+        
+        .product-recs {
+            margin-top: 50px;
+        }
+        
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Quiz Modal Styles */
+        .quiz-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quiz-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .quiz-question {
+            margin-bottom: 25px;
+        }
+        
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        
+        .quiz-option {
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quiz-option:hover {
+            border-color: var(--primary-color);
+            background: #f0f9f9;
+        }
+        
+        .quiz-option.selected {
+            border-color: var(--primary-color);
+            background: #e0f2f1;
+        }
+        
+        .quiz-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .quiz-progress {
+            height: 4px;
+            background: #f0f0f0;
+            border-radius: 2px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .quiz-progress-bar {
+            height: 100%;
+            background: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        /* Download Button Styles */
+        .download-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 15px;
+        }
+        
+        .download-btn:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+        
+        .results-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .upload-section, .results-section {
+                margin: 20px;
+                padding: 20px;
+            }
+            
+            .results-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .routine-step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .step-number {
+                align-self: center;
+            }
+            
+            .quiz-content {
+                padding: 20px;
+            }
+            
+            .results-actions {
+                flex-direction: column;
+            }
+            
+            .download-btn {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .quiz-option {
+                padding: 12px;
+            }
+            
+            .quiz-navigation {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <header class="header">
+            <h1 class="logo">DermaMind</h1>
+            <nav class="navbar">
+                <a href="index2.html#Home" class="nav-link">Home</a>
+                <a href="skin-analysis.html" class="nav-link active">Analysis</a>
+                <a href="product-explorer.html" class="nav-link">Product Explorer</a>
+                <a href="wishlist.html" class="nav-link" id="wishlist-link">
+                    Wishlist <span class="wishlist-count" id="wishlist-count">0</span>
+                </a>
+                <a href="Login1.html" class="nav-link" id="login">Login</a>
+            </nav>
+        </header>
+    </div>
+
+    <main>
+        <section class="analysis-hero">
+            <h1 class="analysis-title">AI Skin Analysis</h1>
+            <p class="analysis-subtitle">Get personalized insights by combining AI analysis with your skin experience</p>
+        </section>
+
+        <section class="upload-section">
+            <h2>Step 1: Upload Your Photo</h2>
+            <p class="upload-text">For best results, ensure your face is well-lit and clearly visible</p>
+            
+            <div class="upload-area" id="upload-area">
+                <div class="upload-icon">
+                    <span class="material-symbols-outlined">cloud_upload</span>
+                </div>
+                <p class="upload-text">Click to upload or drag and drop</p>
+                <p class="upload-hint">JPG or PNG (Max. 5MB)</p>
+                <input type="file" id="file-input" accept="image/*" style="display: none;">
+            </div>
+            
+            <img id="image-preview" alt="Image preview">
+            
+            <div class="loading-spinner" id="loading-spinner">
+                <div class="spinner"></div>
+                <p>Processing your image and preparing analysis...</p>
+            </div>
+            
+            <button class="analyze-btn" id="analyze-btn" disabled>Start Skin Analysis</button>
+        </section>
+
+        <!-- Quiz Modal -->
+        <div class="quiz-modal" id="quiz-modal">
+            <div class="quiz-content">
+                <h2>Tell Us About Your Skin</h2>
+                <p>Help us personalize your analysis by answering a few questions</p>
+                
+                <div class="quiz-progress">
+                    <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+                </div>
+                
+                <div id="quiz-container">
+                    <!-- Quiz questions will be dynamically inserted here -->
+                </div>
+                
+                <div class="quiz-navigation">
+                    <button class="filter-btn" id="quiz-prev" style="display: none;">Previous</button>
+                    <button class="analyze-btn" id="quiz-next">Next Question</button>
+                </div>
+            </div>
+        </div>
+
+        <section class="results-section" id="results-section">
+            <div class="results-card">
+                <div class="results-header">
+                    <h2>Your Personalized Skin Analysis</h2>
+                    <div class="skin-score">Analysis Score: <span id="skin-score">87%</span></div>
+                </div>
+                
+                <div class="results-grid">
+                    <div class="result-category">
+                        <h3 class="category-title">Skin Type Analysis</h3>
+                        <div class="skin-type-result" id="skin-type-result">
+                            <!-- Dynamically filled -->
+                        </div>
+                    </div>
+                    
+                    <div class="result-category">
+                        <h3 class="category-title">Key Concerns & Recommendations</h3>
+                        <ul class="concerns-list" id="concerns-list">
+                            <!-- Dynamically filled -->
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="routine-section">
+                    <h3>Your Custom Skincare Routine</h3>
+                    <p>Tailored specifically based on your skin profile and concerns</p>
+                    
+                    <div class="routine-tabs">
+                        <div class="routine-tab active" data-routine="am">🌞 Morning Routine</div>
+                        <div class="routine-tab" data-routine="pm">🌙 Evening Routine</div>
+                    </div>
+                    
+                    <div class="routine-steps active" id="am-routine">
+                        <!-- Morning routine steps will be dynamically filled -->
+                    </div>
+                    
+                    <div class="routine-steps" id="pm-routine">
+                        <!-- Evening routine steps will be dynamically filled -->
+                    </div>
+                    
+                    <div class="results-actions">
+                        <button class="analyze-btn" onclick="saveRoutine()">Save My Routine</button>
+                        <button class="download-btn" onclick="downloadReport()">
+                            <span class="material-symbols-outlined">download</span>
+                            Download Analysis Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <section class="product-recs">
+                <h2 class="section-heading">Recommended Products For You</h2>
+                <p class="section-description">Curated based on your skin analysis and preferences</p>
+                <div class="product-grid" id="recommended-products">
+                    <!-- Recommended products will be dynamically loaded -->
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <h3 class="footer-logo">DermaMind</h3>
+        <p class="footer-tagline">Your Personal Skin AI Expert</p>
+        <nav class="footer-nav">
+            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="#" class="footer-link">Terms of Service</a>
+            <a href="#" class="footer-link">Contact us</a>
+        </nav>
+        <p class="copyright">© 2024 DermaMind. All rights reserved.</p>
+    </footer>
+
+    <script src="products.js"></script>
+    <script>
+        // Enhanced skin analysis with interactive quiz
+        const quizQuestions = [
+            {
+                question: "How does your skin typically feel throughout the day?",
+                options: [
+                    { text: "Tight and sometimes flaky", value: "dry" },
+                    { text: "Oily and shiny, especially in T-zone", value: "oily" },
+                    { text: "Combination - oily T-zone but dry cheeks", value: "combination" },
+                    { text: "Comfortable and balanced", value: "normal" },
+                    { text: "Sensitive and easily irritated", value: "sensitive" }
+                ]
+            },
+            {
+                question: "What is your biggest skin concern right now?",
+                options: [
+                    { text: "Acne and breakouts", value: "acne" },
+                    { text: "Dryness and dehydration", value: "dryness" },
+                    { text: "Dullness and uneven tone", value: "dullness" },
+                    { text: "Fine lines and aging signs", value: "aging" },
+                    { text: "Redness and sensitivity", value: "redness" },
+                    { text: "Large pores and blackheads", value: "pores" }
+                ]
+            },
+            {
+                question: "How does your skin react to new products?",
+                options: [
+                    { text: "Usually fine, no reactions", value: "resistant" },
+                    { text: "Sometimes gets slightly irritated", value: "sensitive" },
+                    { text: "Often breaks out or gets red", value: "reactive" },
+                    { text: "Not sure / I'm cautious with new products", value: "cautious" }
+                ]
+            },
+            {
+                question: "What's your main skincare goal?",
+                options: [
+                    { text: "Clear up acne and prevent breakouts", value: "clear_skin" },
+                    { text: "Get glowing, radiant skin", value: "glowing" },
+                    { text: "Reduce signs of aging", value: "anti_aging" },
+                    { text: "Soothe and calm my skin", value: "calming" },
+                    { text: "Maintain my current healthy skin", value: "maintenance" }
+                ]
+            }
+        ];
+
+        // DOM elements
+        const uploadArea = document.getElementById('upload-area');
+        const fileInput = document.getElementById('file-input');
+        const imagePreview = document.getElementById('image-preview');
+        const analyzeBtn = document.getElementById('analyze-btn');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const resultsSection = document.getElementById('results-section');
+        const skinTypeResult = document.getElementById('skin-type-result');
+        const concernsList = document.getElementById('concerns-list');
+        const amRoutine = document.getElementById('am-routine');
+        const pmRoutine = document.getElementById('pm-routine');
+        const recommendedProducts = document.getElementById('recommended-products');
+        const skinScore = document.getElementById('skin-score');
+        const quizModal = document.getElementById('quiz-modal');
+        const quizContainer = document.getElementById('quiz-container');
+        const quizProgressBar = document.getElementById('quiz-progress-bar');
+        const quizPrevBtn = document.getElementById('quiz-prev');
+        const quizNextBtn = document.getElementById('quiz-next');
+
+        let currentQuestion = 0;
+        let userAnswers = {};
+        let analysisResults = {};
+
+        // Event listeners
+        uploadArea.addEventListener('click', () => fileInput.click());
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('active');
+        });
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('active');
+        });
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('active');
+            if (e.dataTransfer.files.length) {
+                fileInput.files = e.dataTransfer.files;
+                handleFileSelect();
+            }
+        });
+
+        fileInput.addEventListener('change', handleFileSelect);
+        analyzeBtn.addEventListener('click', startAnalysis);
+        quizPrevBtn.addEventListener('click', showPreviousQuestion);
+        quizNextBtn.addEventListener('click', showNextQuestion);
+
+        // Handle file selection
+        function handleFileSelect() {
+            const file = fileInput.files[0];
+            if (file) {
+                if (file.type.match('image.*')) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        imagePreview.src = e.target.result;
+                        imagePreview.style.display = 'block';
+                        analyzeBtn.disabled = false;
+                    };
+                    
+                    reader.readAsDataURL(file);
+                } else {
+                    alert('Please select a valid image file (JPG or PNG)');
+                }
+            }
+        }
+
+        // Start analysis process
+        function startAnalysis() {
+            // Show loading spinner
+            loadingSpinner.style.display = 'block';
+            analyzeBtn.disabled = true;
+            
+            // Simulate image processing
+            setTimeout(() => {
+                loadingSpinner.style.display = 'none';
+                showQuiz();
+            }, 2000);
+        }
+
+        // Show quiz modal
+        function showQuiz() {
+            currentQuestion = 0;
+            userAnswers = {};
+            quizModal.style.display = 'flex';
+            displayQuestion(currentQuestion);
+        }
+
+        // Display current question
+        function displayQuestion(index) {
+            const question = quizQuestions[index];
+            quizContainer.innerHTML = '';
+            
+            // Update progress bar
+            const progress = ((index + 1) / quizQuestions.length) * 100;
+            quizProgressBar.style.width = progress + '%';
+            
+            // Create question element
+            const questionEl = document.createElement('div');
+            questionEl.className = 'quiz-question';
+            questionEl.innerHTML = `<h3>${question.question}</h3>`;
+            
+            // Create options
+            const optionsEl = document.createElement('div');
+            optionsEl.className = 'quiz-options';
+            
+            question.options.forEach((option, i) => {
+                const optionEl = document.createElement('div');
+                optionEl.className = 'quiz-option';
+                optionEl.textContent = option.text;
+                optionEl.dataset.value = option.value;
+                
+                if (userAnswers[`q${index}`] === option.value) {
+                    optionEl.classList.add('selected');
+                }
+                
+                optionEl.addEventListener('click', () => {
+                    // Remove selected class from all options
+                    optionsEl.querySelectorAll('.quiz-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to clicked option
+                    optionEl.classList.add('selected');
+                    userAnswers[`q${index}`] = option.value;
+                });
+                
+                optionsEl.appendChild(optionEl);
+            });
+            
+            questionEl.appendChild(optionsEl);
+            quizContainer.appendChild(questionEl);
+            
+            // Update navigation buttons
+            quizPrevBtn.style.display = index === 0 ? 'none' : 'inline-block';
+            quizNextBtn.textContent = index === quizQuestions.length - 1 ? 'Get My Analysis' : 'Next Question';
+        }
+
+        // Show previous question
+        function showPreviousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                displayQuestion(currentQuestion);
+            }
+        }
+
+        // Show next question or finish quiz
+        function showNextQuestion() {
+            // Check if current question is answered
+            if (!userAnswers[`q${currentQuestion}`]) {
+                alert('Please select an answer to continue');
+                return;
+            }
+            
+            if (currentQuestion < quizQuestions.length - 1) {
+                currentQuestion++;
+                displayQuestion(currentQuestion);
+            } else {
+                finishQuiz();
+            }
+        }
+
+        // Finish quiz and show results
+        function finishQuiz() {
+            quizModal.style.display = 'none';
+            generatePersonalizedResults();
+            resultsSection.style.display = 'block';
+            resultsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Generate personalized results based on user answers
+        function generatePersonalizedResults() {
+            const skinType = userAnswers.q0;
+            const mainConcern = userAnswers.q1;
+            const sensitivity = userAnswers.q2;
+            const goal = userAnswers.q3;
+            
+            // Store results for report
+            analysisResults = {
+                skinType: skinType,
+                mainConcern: mainConcern,
+                sensitivity: sensitivity,
+                goal: goal,
+                timestamp: new Date().toLocaleDateString()
+            };
+            
+            // Generate skin type description
+            const skinTypeDescriptions = {
+                dry: {
+                    type: "Dry Skin",
+                    description: "Your skin produces less sebum than it needs, which can lead to tightness, flakiness, and visible fine lines. Proper hydration and barrier repair are essential.",
+                    score: 84
+                },
+                oily: {
+                    type: "Oily Skin", 
+                    description: "Your skin produces excess sebum, giving it a shiny appearance especially in the T-zone. The good news is oily skin tends to age slower!",
+                    score: 79
+                },
+                combination: {
+                    type: "Combination Skin",
+                    description: "You experience both oily and dry areas - typically an oily T-zone (forehead, nose, chin) with normal to dry cheeks. This is the most common skin type.",
+                    score: 87
+                },
+                normal: {
+                    type: "Normal Skin", 
+                    description: "Your skin is well-balanced with good hydration levels and minimal concerns. Maintain this healthy balance with consistent care.",
+                    score: 92
+                },
+                sensitive: {
+                    type: "Sensitive Skin",
+                    description: "Your skin is reactive and prone to redness and irritation. Gentle, fragrance-free products will work best for you.",
+                    score: 76
+                }
+            };
+            
+            const skinInfo = skinTypeDescriptions[skinType] || skinTypeDescriptions.combination;
+            
+            // Generate concerns based on answers
+            const concerns = generateConcerns(skinType, mainConcern, sensitivity);
+            
+            // Display results
+            displayResults(skinInfo, concerns);
+            
+            // Generate and display routine
+            generateRoutine(skinType, mainConcern, sensitivity, goal);
+            
+            // Load recommended products
+            loadRecommendedProducts(skinType, mainConcern);
+        }
+
+        // Generate concerns based on user answers
+        function generateConcerns(skinType, mainConcern, sensitivity) {
+            const concerns = [];
+            
+            // Base concerns based on skin type
+            if (skinType === 'dry') {
+                concerns.push({ name: "Dehydration", severity: "high" });
+                concerns.push({ name: "Flakiness", severity: "medium" });
+                concerns.push({ name: "Fine Lines", severity: "medium" });
+            } else if (skinType === 'oily') {
+                concerns.push({ name: "Excess Sebum", severity: "high" });
+                concerns.push({ name: "Enlarged Pores", severity: "medium" });
+                concerns.push({ name: "Blackheads", severity: "medium" });
+            } else if (skinType === 'combination') {
+                concerns.push({ name: "Oiliness in T-zone", severity: "medium" });
+                concerns.push({ name: "Dryness on Cheeks", severity: "medium" });
+                concerns.push({ name: "Uneven Texture", severity: "low" });
+            } else if (skinType === 'sensitive') {
+                concerns.push({ name: "Redness", severity: "high" });
+                concerns.push({ name: "Reactivity", severity: "medium" });
+                concerns.push({ name: "Irritation", severity: "medium" });
+            }
+            
+            // Add main concern
+            const concernMap = {
+                acne: { name: "Acne & Breakouts", severity: "high" },
+                dryness: { name: "Severe Dryness", severity: "high" },
+                dullness: { name: "Dullness", severity: "medium" },
+                aging: { name: "Aging Signs", severity: "medium" },
+                redness: { name: "Redness", severity: "medium" },
+                pores: { name: "Large Pores", severity: "medium" }
+            };
+            
+            if (concernMap[mainConcern] && !concerns.some(c => c.name === concernMap[mainConcern].name)) {
+                concerns.push(concernMap[mainConcern]);
+            }
+            
+            // Add sensitivity concern if applicable
+            if (sensitivity === 'sensitive' || sensitivity === 'reactive') {
+                if (!concerns.some(c => c.name === "Sensitivity")) {
+                    concerns.push({ name: "Sensitivity", severity: "medium" });
+                }
+            }
+            
+            return concerns.slice(0, 5); // Max 5 concerns
+        }
+
+        // Display results
+        function displayResults(skinInfo, concerns) {
+            skinTypeResult.innerHTML = `
+                <h4>${skinInfo.type}</h4>
+                <p>${skinInfo.description}</p>
+            `;
+            
+            skinScore.textContent = skinInfo.score + '%';
+            
+            concernsList.innerHTML = '';
+            concerns.forEach(concern => {
+                const li = document.createElement('li');
+                li.className = 'concern-item';
+                li.innerHTML = `
+                    <span class="concern-name">${concern.name}</span>
+                    <span class="concern-severity severity-${concern.severity}">${concern.severity.toUpperCase()}</span>
+                `;
+                concernsList.appendChild(li);
+            });
+        }
+
+        // Generate personalized routine
+        function generateRoutine(skinType, mainConcern, sensitivity, goal) {
+            const routines = {
+                am: generateMorningRoutine(skinType, mainConcern, sensitivity),
+                pm: generateEveningRoutine(skinType, mainConcern, sensitivity, goal)
+            };
+            
+            displayRoutine('am', routines.am);
+            displayRoutine('pm', routines.pm);
+            setupRoutineTabs();
+        }
+
+        function generateMorningRoutine(skinType, mainConcern, sensitivity) {
+            const baseSteps = [
+                { title: 'Gentle Cleanser', description: 'Start with a mild, pH-balanced cleanser to refresh skin without stripping natural oils.' }
+            ];
+            
+            if (mainConcern === 'dullness' || mainConcern === 'aging') {
+                baseSteps.push({ 
+                    title: 'Vitamin C Serum', 
+                    description: 'Apply an antioxidant serum to protect against environmental damage and brighten complexion.' 
+                });
+            }
+            
+            baseSteps.push({ 
+                title: 'Lightweight Moisturizer', 
+                description: getMoisturizerDescription(skinType) 
+            });
+            
+            baseSteps.push({ 
+                title: 'Broad-Spectrum Sunscreen', 
+                description: 'Essential SPF 30+ protection to prevent UV damage and maintain skin health.' 
+            });
+            
+            return baseSteps;
+        }
+
+        function generateEveningRoutine(skinType, mainConcern, sensitivity, goal) {
+            const baseSteps = [
+                { title: 'Double Cleanse', description: 'First with oil-based cleanser to remove makeup/sunscreen, then water-based for deep cleaning.' }
+            ];
+            
+            // Add treatment steps based on concerns
+            if (mainConcern === 'acne') {
+                baseSteps.push({ 
+                    title: 'Salicylic Acid Treatment', 
+                    description: 'Target breakouts and unclog pores with a BHA treatment 3-4 times weekly.' 
+                });
+            }
+            
+            if (mainConcern === 'aging' || goal === 'anti_aging') {
+                baseSteps.push({ 
+                    title: 'Retinol Treatment', 
+                    description: 'Use retinol 2-3 times weekly to target fine lines and improve skin texture.' 
+                });
+            }
+            
+            if (mainConcern === 'dullness') {
+                baseSteps.push({ 
+                    title: 'Exfoliating Treatment', 
+                    description: 'Gentle AHA exfoliation 2 times weekly to reveal brighter, smoother skin.' 
+                });
+            }
+            
+            baseSteps.push({ 
+                title: 'Repairing Moisturizer', 
+                description: getNightMoisturizerDescription(skinType) 
+            });
+            
+            return baseSteps;
+        }
+
+        function getMoisturizerDescription(skinType) {
+            const descriptions = {
+                dry: 'Rich, cream-based formula to deeply hydrate and reinforce skin barrier.',
+                oily: 'Oil-free, gel-based moisturizer that hydrates without adding shine.',
+                combination: 'Lightweight lotion that balances both oily and dry areas.',
+                normal: 'Balanced formula to maintain optimal hydration levels.',
+                sensitive: 'Fragrance-free, calming moisturizer with barrier-supporting ingredients.'
+            };
+            return descriptions[skinType] || descriptions.normal;
+        }
+
+        function getNightMoisturizerDescription(skinType) {
+            const descriptions = {
+                dry: 'Nourishing night cream or facial oil to support overnight repair and hydration.',
+                oily: 'Lightweight, non-comedogenic formula that won\'t clog pores overnight.',
+                combination: 'Targeted treatment - richer on dry areas, lighter on oily zones.',
+                normal: 'Reparative formula to support skin\'s natural renewal process.',
+                sensitive: 'Soothing, fragrance-free night cream to calm and restore barrier.'
+            };
+            return descriptions[skinType] || descriptions.normal;
+        }
+
+        // Display routine steps
+        function displayRoutine(time, steps) {
+            const routineElement = document.getElementById(`${time}-routine`);
+            routineElement.innerHTML = '';
+            
+            steps.forEach((step, index) => {
+                const stepElement = document.createElement('div');
+                stepElement.className = 'routine-step';
+                stepElement.innerHTML = `
+                    <div class="step-number">${index + 1}</div>
+                    <div class="step-content">
+                        <div class="step-title">${step.title}</div>
+                        <div class="step-description">${step.description}</div>
+                    </div>
+                `;
+                routineElement.appendChild(stepElement);
+            });
+        }
+
+        // Set up routine tab switching
+        function setupRoutineTabs() {
+            const tabs = document.querySelectorAll('.routine-tab');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    document.querySelectorAll('.routine-steps').forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    const routineType = tab.getAttribute('data-routine');
+                    document.getElementById(`${routineType}-routine`).classList.add('active');
+                });
+            });
+        }
+
+        // Load recommended products
+        function loadRecommendedProducts(skinType, mainConcern) {
+            const allProducts = productHelpers.getAllProducts();
+            
+            const recommended = allProducts.filter(product => {
+                const skinTypeMatch = product.skinTypes.includes(skinType) || 
+                                     product.skinTypes.includes('all');
+                
+                const concernMatch = product.concerns.some(concern => 
+                    mainConcern.includes(concern.toLowerCase()) ||
+                    concern.toLowerCase().includes(mainConcern)
+                );
+                
+                return skinTypeMatch && concernMatch;
+            });
+            
+            const productsToShow = recommended.length > 0 ? 
+                recommended.slice(0, 6) : 
+                allProducts.filter(p => p.skinTypes.includes(skinType) || p.skinTypes.includes('all')).slice(0, 6);
+            
+            recommendedProducts.innerHTML = productsToShow.map(product => `
+                <div class="product-card" data-product-id="${product.id}">
+                    <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.src='https://via.placeholder.com/300x300?text=Product+Image'">
+                    <div class="product-info">
+                        <h4 class="product-name">${product.name}</h4>
+                        <span class="material-symbols-outlined wishlist-icon">favorite</span>
+                        <p class="product-details">${product.description}<br>${product.price}</p>
+                        <div class="product-meta">
+                            <span class="product-rating">
+                                <i class="fas fa-star"></i> ${product.rating}
+                            </span>
+                            <span class="product-reviews">${product.reviews} reviews</span>
+                        </div>
+                        <button class="view-details-btn" onclick="viewProductDetails('${product.id}')">View Details</button>
+                    </div>
+                </div>
+            `).join('');
+            
+            initializeWishlistButtons();
+        }
+
+        // Download analysis report
+        function downloadReport() {
+            const skinTypeText = document.querySelector('.skin-type-result h4').textContent;
+            const skinDescription = document.querySelector('.skin-type-result p').textContent;
+            const concerns = Array.from(document.querySelectorAll('.concern-item')).map(item => {
+                const name = item.querySelector('.concern-name').textContent;
+                const severity = item.querySelector('.concern-severity').textContent;
+                return `${name} (${severity})`;
+            }).join(', ');
+            
+            const amRoutineText = Array.from(document.querySelectorAll('#am-routine .routine-step')).map((step, index) => {
+                const title = step.querySelector('.step-title').textContent;
+                const desc = step.querySelector('.step-description').textContent;
+                return `${index + 1}. ${title}: ${desc}`;
+            }).join('\n');
+            
+            const pmRoutineText = Array.from(document.querySelectorAll('#pm-routine .routine-step')).map((step, index) => {
+                const title = step.querySelector('.step-title').textContent;
+                const desc = step.querySelector('.step-description').textContent;
+                return `${index + 1}. ${title}: ${desc}`;
+            }).join('\n');
+            
+            const report = `
+DERMAMIND SKIN ANALYSIS REPORT
+Generated on: ${new Date().toLocaleDateString()}
+Analysis Score: ${skinScore.textContent}
+
+SKIN TYPE ANALYSIS:
+${skinTypeText}
+${skinDescription}
+
+KEY CONCERNS IDENTIFIED:
+${concerns}
+
+PERSONALIZED SKINCARE ROUTINE:
+
+MORNING ROUTINE:
+${amRoutineText}
+
+EVENING ROUTINE:
+${pmRoutineText}
+
+RECOMMENDATIONS:
+- Follow this routine consistently for 4-6 weeks to see visible results
+- Always patch test new products before full application
+- Stay hydrated and maintain a balanced diet
+- Re-analyze your skin in 4 weeks to track progress
+
+Thank you for using DermaMind AI Skin Analysis!
+            `;
+            
+            const blob = new Blob([report], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `DermaMind_Skin_Analysis_${new Date().toISOString().split('T')[0]}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showNotification('Analysis report downloaded successfully!');
+        }
+
+        // Initialize wishlist buttons
+        function initializeWishlistButtons() {
+            const wishlistButtons = document.querySelectorAll('.product-info .wishlist-icon');
+            
+            wishlistButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const productCard = this.closest('.product-card');
+                    const productId = productCard.getAttribute('data-product-id');
+                    const product = productHelpers.getProductById(productId);
+                    
+                    if (product) {
+                        toggleWishlist(product, this);
+                    }
+                });
+            });
+            
+            setInitialWishlistStates();
+        }
+
+        // Wishlist functionality
+        function getWishlist() {
+            const wishlist = localStorage.getItem('dermamind-wishlist');
+            return wishlist ? JSON.parse(wishlist) : [];
+        }
+
+        function toggleWishlist(product, button) {
+            const wishlist = getWishlist();
+            
+            const isInWishlist = wishlist.some(item => item.id === product.id);
+            
+            if (isInWishlist) {
+                const updatedWishlist = wishlist.filter(item => item.id !== product.id);
+                localStorage.setItem('dermamind-wishlist', JSON.stringify(updatedWishlist));
+                button.classList.remove('active');
+                showNotification('Product removed from wishlist');
+            } else {
+                wishlist.push(product);
+                localStorage.setItem('dermamind-wishlist', JSON.stringify(wishlist));
+                button.classList.add('active');
+                showNotification('Product added to wishlist!');
+            }
+            
+            updateWishlistCount();
+            dispatchWishlistUpdate();
+        }
+
+        function setInitialWishlistStates() {
+            const wishlistButtons = document.querySelectorAll('.product-info .wishlist-icon');
+            const wishlist = getWishlist();
+            
+            wishlistButtons.forEach(button => {
+                const productCard = button.closest('.product-card');
+                const productId = productCard.getAttribute('data-product-id');
+                
+                if (productId && wishlist.some(item => item.id === productId)) {
+                    button.classList.add('active');
+                }
+            });
+        }
+
+        function updateWishlistCount() {
+            const wishlist = getWishlist();
+            const countElement = document.getElementById('wishlist-count');
+            
+            if (countElement) {
+                countElement.textContent = wishlist.length;
+            }
+        }
+
+        function showNotification(message) {
+            const existingNotifications = document.querySelectorAll('[data-notification]');
+            existingNotifications.forEach(notification => notification.remove());
+
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--primary-color);
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 1000;
+                animation: slideInRight 0.3s ease;
+            `;
+            notification.textContent = message;
+            notification.setAttribute('data-notification', 'true');
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        function dispatchWishlistUpdate() {
+            const event = new CustomEvent('wishlistUpdated');
+            window.dispatchEvent(event);
+        }
+
+        // Save routine function
+        function saveRoutine() {
+            showNotification('Your personalized routine has been saved to your profile!');
+        }
+
+        // View product details function
+        function viewProductDetails(productId) {
+            window.location.href = `product-detail.html?id=${productId}`;
+        }
+
+        // Initialize wishlist count on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateWishlistCount();
+        });
+    </script>
+</body>
+</html>
