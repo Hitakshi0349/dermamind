@@ -59,6 +59,28 @@ a {
     }
 }
 
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
 /* Header & Navigation */
 .header {
     display: flex;
@@ -96,22 +118,9 @@ a {
     font-weight: 600;
 }
 
-#icon {
-    color: gray; 
-    transition: color var(--transition-fast), transform var(--transition-fast);
-}
-
-#icon:hover {
-    color: rgb(224, 142, 159);
-}
-
 .nav-link:hover {
     color: var(--primary-color);
     transform: translateY(var(--hover-translate));
-}
-
-.heart-icon:hover {
-    cursor: pointer;
 }
 
 #login {
@@ -128,6 +137,19 @@ a {
     background-color: #018989;
     border-color: #016d6d;
     color: white;
+}
+
+.wishlist-count {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7em;
+    margin-left: 5px;
 }
 
 /* Hero Section */
@@ -374,6 +396,57 @@ a {
 
 .view-details-btn:hover {
     transform: scale(1.05);
+}
+
+/* Wishlist Icon Styling - Fixed to prevent blinking */
+.product-info .wishlist-icon {
+    position: absolute !important;
+    top: 10px !important;
+    right: 20px !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-radius: 50% !important;
+    padding: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    color: gray !important;
+    z-index: 100 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+    font-size: 20px !important;
+    width: 36px !important;
+    height: 36px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    pointer-events: auto !important;
+}
+
+/* Hover state - same as navbar */
+.product-info .wishlist-icon:hover {
+    color: #e55a99 !important;
+    transform: scale(1.1) !important;
+    background: rgba(255, 255, 255, 1) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Active state (when product is in wishlist) */
+.product-info .wishlist-icon.active {
+    color: #e55a99 !important;
+    font-variation-settings: 'FILL' 1 !important;
+}
+
+/* Ensure product card hover doesn't interfere */
+.product-card:hover .product-info .wishlist-icon {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: gray !important;
+}
+
+.product-card:hover .product-info .wishlist-icon:hover {
+    color: #e55a99 !important;
+    transform: scale(1.1) !important;
+}
+
+.product-card:hover .product-info .wishlist-icon.active {
+    color: #e55a99 !important;
 }
 
 /* Final CTA Section */
@@ -681,16 +754,6 @@ a {
     color: var(--text-light);
 }
 
-/* Mobile Navigation */
-.mobile-menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.5em;
-    color: var(--primary-color);
-    cursor: pointer;
-}
-
 /* Responsive Design */
 @media (max-width: 1200px) {
     .header, .hero-section, .step-container, .product-grid, .head {
@@ -853,44 +916,4 @@ a {
         width: 90%;
         max-width: 300px;
     }
-}
-
-/* Small mobile devices */
-@media (max-width: 360px) {
-    .header {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .navbar {
-        justify-content: center;
-    }
-    
-    .hero-content, .hero-image-container {
-        min-width: unset;
-        width: 100%;
-    }
-    
-    .product-info .material-symbols-outlined {
-        left: 200px !important;
-    }
-}
-
-/* Fix for product card favorite icons */
-.product-info {
-    position: relative;
-}
-
-.product-info .material-symbols-outlined {
-    position: absolute !important;
-    top: 10px !important;
-    right: 20px !important;
-    left: auto !important;
-    cursor: pointer;
-}
-
-/* Ensure videos maintain aspect ratio */
-.product-card video {
-    object-fit: cover;
-    background: #000;
 }
