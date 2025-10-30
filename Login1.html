@@ -400,7 +400,7 @@
     <header class="header">
       <h1 class="logo">DermaMind</h1>
       <nav class="navbar">
-        <a href="index2.html#Home" class="nav-link">Home</a>
+        <a href="index.html#Home" class="nav-link">Home</a>
         <a href="skin-analysis.html" class="nav-link">Analysis</a>
         <a href="product-explorer.html" class="nav-link">Product Explorer</a>
         <a href="wishlist.html" class="nav-link" id="wishlist-link">
@@ -666,7 +666,7 @@
                 
                 // Redirect to home page after successful login
                 setTimeout(() => {
-                    window.location.href = 'index2.html';
+                    window.location.href = 'index.html';
                 }, 1500);
             } else {
                 // Failed login
@@ -732,7 +732,7 @@
             
             // Redirect to home page
             setTimeout(() => {
-                window.location.href = 'index2.html';
+                window.location.href = 'index.html';
             }, 1500);
         }, 2000);
     });
@@ -765,7 +765,7 @@
         if (currentUser) {
             showNotification(`Welcome back, ${currentUser.name}! You are already logged in.`);
             setTimeout(() => {
-                window.location.href = 'index2.html';
+                window.location.href = 'index.html';
             }, 2000);
         }
     });

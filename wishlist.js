@@ -218,7 +218,7 @@ function dispatchWishlistUpdate() {
     localStorage.setItem('dermamind-wishlist', currentWishlist || '[]');
 }
 
-// Add this function to be called from index2.html when wishlist changes
+// Add this function to be called from index.html when wishlist changes
 function updateWishlistFromMain() {
     if (window.wishlistManager) {
         window.wishlistManager.displayWishlist();
